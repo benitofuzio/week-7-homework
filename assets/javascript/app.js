@@ -10,26 +10,26 @@ $(document).ready(function() {
 	var trainTimeIn = $('#trainTime').val().trim();
 	var frequencyIn = $('#frequency').val().trim();
 	
-	// First Time (pushed back 1 year to make sure it comes before current time)
+
 	var firstTimeConverted = moment(trainTimeIn,"hh:mm").subtract(1, "years");
 		console.log(firstTimeConverted);
 
-	// Current Time
+
 	var currentTime = moment();
 		console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
 	var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
 		console.log("DIFFERENCE IN TIME: " + diffTime);
 
-	// Time apart (remainder)
+
 	var tRemainder = diffTime % frequencyIn; 
 		console.log("time remainder: " + tRemainder);
 
-	// Minute Until Train
+
 	var tMinutesTillTrain = frequencyIn - tRemainder;
 		console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
-	// Next Train
+
 	var nextTrain = moment().add(tMinutesTillTrain, "minutes");
 		console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
@@ -54,7 +54,7 @@ $(document).ready(function() {
 
 });	
 
-	//APPEND THE TRAIN DATA TO THE TABLE
+
 	dataRef.on('child_added', function(childSnapshot, prevChildKey) {
 		console.log("child" + childSnapshot.val());
 
@@ -64,4 +64,4 @@ $(document).ready(function() {
 		 childSnapshot.val().minutesAway + "</td></tr>");
 		});
 	
-}); //END DOCUMENT.READY
+}); 
